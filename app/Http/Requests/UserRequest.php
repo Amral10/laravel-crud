@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UserRequest extends FormRequest
 {
@@ -21,9 +22,16 @@ class UserRequest extends FormRequest
      */
     public function rules(): array
     {
+        $user = $this->route('user');
+        $userId = $user?$user->id:null;
+
         return[
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('users', 'email')->ignore($userId),
+            ],
             'password' => 'required|min:6',
         ];
     }
@@ -33,6 +41,7 @@ class UserRequest extends FormRequest
                 'name.required' => 'o nome é obrigatório!',
                 'email.required' => 'o email é obrigatório!',
                 'email.email' => 'necessário um email válido!',
+                'email.unique'=> 'O email ja está cadastrado',
                 'password.required' => 'campo de senha é obrigatório!', 
                 'password.min' => 'senha com mínimo :min caracteres' ,
             ];

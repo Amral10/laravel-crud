@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CRUD-PHP</title>
+</head>
+
+<body>
+    <a href="{{ route('user.index') }}">Listar</a><br>
+    <a href="{{ route('user.show', ['user' => $user->id]) }}">Visualizar</a><br>
+
+    <h2>Editar Usuario</h2>
+
+    @if($errors->any)
+        @foreach ($errors->all() as $error)
+            <p style="color: #f00">
+                {{ $error }}
+            </p>
+        @endforeach
+        </p><br>
+    @endif
+
+    <form action="{{ route('user-update', ['user' => $user->id]) }}" method="POST">
+        @csrf
+        @method('PUT')
+
+        <label>Nome: </label>
+        <input type="text" name="name" placeholder="Nome Completo" value="{{ old('name', $user->name) }}"><br><br>
+
+        <label>email: </label>
+        <input type="email" name="email" placeholder="email do usuario"
+            value="{{ old('email', $user->email) }}"><br><br>
+
+        <label>senha: </label>
+        <input type="password" name="password" placeholder="senha com mínimo 6 caracteres"
+            value="{{ old('password') }}"><br><br>
+
+        <button type="submit">Salvar</button>
+
+</body>
+
+</html>

@@ -5,8 +5,12 @@ use Illuminate\Support\Facades\Route;
 
 
 route::get('/', [UserController::class, 'index'])->name('user.index');
+route::get('/show-user{user}', [UserController::class,'show'])->name('user.show');
 route::get('/create-user', [UserController::class, 'create'])->name('user.create');
 route::post('/store-user', [UserController::class, 'store'])->name('user-store');
+route::get('/edit-user{user}', [UserController::class,'edit'])->name('user.edit');
+route::put('/update-user{user}', [UserController::class, 'update'])->name('user-update');
+route::delete('/destroy-user{user}', [UserController::class,'destroy'])->name('user.destroy');
 
 /*
 |--------------------------------------------------------------------------
@@ -18,4 +22,3 @@ route::post('/store-user', [UserController::class, 'store'])->name('user-store')
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
