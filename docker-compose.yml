@@ -1,0 +1,37 @@
+services:
+  mysql_db:
+    image: mysql:8.0
+    container_name: laravel-mysql
+    env_file: .env
+    command: mysqld --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - '3306:3306'
+    volumes:
+      - './DB/mysql:/var/lib/mysql'
+      - './DB/entrypoint-initdb.d:/docker-entrypoint-initdb.d'
+    networks:
+      - microsservice-laravel
+
+  phpmyadmin:
+    container_name: laravel-phpmyadmin
+    image: phpmyadmin:5.2.1
+    ports:
+      - 8080:80
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql_db
+      PMA_USER: ${DB_USERNAME}
+      PMA_PASSWORD: ${DB_PASSWORD}
+    networks:
+      - microsservice-laravel
+    depends_on:
+      - mysql_db
+
+networks:
+  microsservice-laravel:
+    driver: bridge
