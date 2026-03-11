@@ -24,3 +24,21 @@ acessar conteudo padrao do laravel
 
 http://127.0.0.1:8000
 ```
+
+criar a controller 
+´´´
+
+php artisan make:controller NomeController
+´´´
+
+Criar view
+```
+
+php artisan make:view NomeDaView
+```
+
+criar arquivo de request
+```
+
+php artisan make:request UserRequest
+```

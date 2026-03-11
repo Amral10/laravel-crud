@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 
 
 route::get('/', [UserController::class, 'index'])->name('user.index');
+route::get('/create-user', [UserController::class, 'create'])->name('user.create');
+route::post('/store-user', [UserController::class, 'store'])->name('user-store');
 
 /*
 |--------------------------------------------------------------------------
