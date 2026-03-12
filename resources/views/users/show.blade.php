@@ -26,10 +26,11 @@
     Cadastrado: {{ \Carbon\Carbon::parse($user->created_at)->format('d/m/y h:i:s') }}<br>
     Editado: {{ \Carbon\Carbon::parse($user->updated_at)->format('d/m/y h:i:s') }}<br>
     <a href="{{ route('user.edit', ['user' => $user->id]) }}">Editar</a><br>
-    @csrf
-    @method('delete')
+    <form method="POST" action="{{ route('user.destroy', ['user' => $user->id]) }}">
+        @csrf
+        @method('delete')
 
-    <button type="submit" onclick="return confirm('tem certeza q deseja deletar?')">Apagar</button>
+        <button type="submit" onclick="return confirm('tem certeza q deseja deletar?')">Apagar</button>
     </form>
 
 
