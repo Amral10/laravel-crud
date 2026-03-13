@@ -8,37 +8,37 @@
 
 ## Sequencia para criar o projeto
 
-- criar o projeto com laravel
+1. criar o projeto com laravel
 ```
 
 composer create-project --prefer-dist laravel/laravel .
 ```
 
-- Iniciar projeto criado com laravel
+2. Iniciar projeto criado com laravel
 ```
 
 php artisan serve 
 ```
 
-- acessar conteudo padrao do laravel
+3. acessar conteudo padrao do laravel
 ```
 
 http://127.0.0.1:8000
 ```
 
-- criar a controller 
-´´´
+4. criar a controller 
+```
 
 php artisan make:controller NomeController
-´´´
+```
 
-- Criar view
+5. Criar view
 ```
 
 php artisan make:view NomeDaView
 ```
 
-- criar arquivo de request
+6. criar arquivo de request
 ```
 
 php artisan make:request UserRequest
