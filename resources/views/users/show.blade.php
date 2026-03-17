@@ -23,6 +23,7 @@
     ID: {{ $user->id }}<br>
     Nome: {{ $user->name }}<br>
     Email: {{ $user->email }}<br>
+    Bio: {{ $user->bio }} <br>
     Cadastrado: {{ \Carbon\Carbon::parse($user->created_at)->format('d/m/y h:i:s') }}<br>
     Editado: {{ \Carbon\Carbon::parse($user->updated_at)->format('d/m/y h:i:s') }}<br>
     <a href="{{ route('user.edit', ['user' => $user->id]) }}">Editar</a><br>

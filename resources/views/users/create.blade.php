@@ -33,6 +33,9 @@
         <label>senha: </label>
         <input type="password" name="password" placeholder="senha com mínimo 6 caracteres" value="{{ old('password') }}"><br><br>
 
+        <label>Bio: </label>
+        <input type="text" name="bio" id="insira uma descrição"><br><br>
+        
         <button type="submit">Cadastrar</button>
     </form>
 </body>

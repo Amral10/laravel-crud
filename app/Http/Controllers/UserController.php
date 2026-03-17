@@ -39,6 +39,7 @@ class UserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
+            'bio'=> $request->bio,
         ]);
 
         // redirecionar usuario e enviar msg 
@@ -58,6 +59,7 @@ class UserController extends Controller
           'name' => $request->name,
           'email'=> $request->email,
           'senha' => $request->password,
+          'bio'=> $request->bio,
         ]);
         
         return redirect()->route('user.show', ['user' => $user->id ])->with('success', 'usuario editado com sucesso!');
