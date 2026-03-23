@@ -42,6 +42,14 @@
 
 
 
+<<<<<<< HEAD
+=======
+        <label>Bio: </label>
+        <input type="text" name="bio" id="insira uma descrição"><br><br>
+        
+        <button type="submit">Cadastrar</button>
+    </form>
+>>>>>>> 054ae5405cf8a239f156fc660f9ee952d4715dd9
 </body>
 
 </html>
