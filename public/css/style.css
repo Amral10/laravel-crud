@@ -1,0 +1,147 @@
+body {
+    font-family: 'poppins', sans-serif;
+    background-color: #63c4ff;
+    transition: 0.5;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 32px 0 rgba(70, 30, 135, 0.37);
+    backdrop-filter: blur(13.5px);
+    -webkit-backdrop-filter: blur((13.5px));
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    width: 25%;
+    margin: auto;
+    margin-top: 10%;
+    padding-top: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    transition: 0.5s;
+}
+
+@media only screen and (max-width: 668px) {
+    .container {
+        width: 75%;
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    .container {
+        width: 40%;
+    }
+}
+
+.container h1 {
+    text-align: center;
+    color: #232c3d;
+    transition: 0.5;
+}
+
+.theme {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+label {
+    margin-top: 10px;
+}
+
+input {
+    width: 80%;
+    margin-bottom: 20px;
+    border: none;
+    background-color: #f0f5ff;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 14px;
+    transition: 0.5;
+}
+
+input:focus {
+    outline: none;
+}
+
+form button {
+    width: 40%;
+    border: none;
+    background-color: #63c4ff;
+    border-radius: 10px;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    transition: 0.5;
+}
+
+form button:hover {
+    cursor: pointer;
+    background-color: #43a0da;
+}
+
+form button:focus {
+    outline: none;
+}
+
+.error-message {
+    background-color: rgba(255, 0, 0, 0.1);
+    /* Fundo vermelho bem clarinho e transparente */
+    color: #d32f2f;
+    /* Vermelho mais forte para o texto */
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 15px;
+    font-size: 13px;
+    text-align: center;
+    width: 80%;
+    /* Para alinhar com o tamanho dos inputs */
+    border: 1px solid rgba(211, 47, 47, 0.2);
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+/* Uma pequena animação para o erro aparecer suavemente */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.footer-links {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Uma linha sutil para separar */
+    padding-top: 15px;
+}
+
+.footer-links a {
+    color: #232c3d;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    transition: 0.3s;
+    opacity: 0.8;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: #43a0da;
+    /* Muda para a cor do botão ao passar o mouse */
+    text-decoration: underline;
+}

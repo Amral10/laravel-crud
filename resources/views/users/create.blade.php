@@ -1,39 +1,47 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CRUD-PHP</title>
+    <title>Registrar</title>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 </head>
+
 <body>
-        <a href="{{ route('user.index') }}">Listar</a><br>
+    <div class="theme">
+        <div class="container">
+            <h1>Registrar</h1>
 
-    <h2>Cadastrar usuário</h2>
+            <form action="{{ route('user-store') }}" method="POST">
+                @csrf
+                @method('POST')
+                <input type="text" name="name" placeholder="Nome:" value="{{ old('name') }}"><br><br>
 
-    @if($errors->any)
-        @foreach ($errors->all() as $error)
-            <p style="color: #f00">
-            {{ $error }}
-            </p>
-        @endforeach
-        </p><br>
-    @endif
+                <input type="email" name="email" placeholder="Email:" value="{{ old('email') }}"><br><br>
 
-    <form action="{{ route('user-store') }}" method="POST">
-        @csrf
-        @method('POST')
+                <input type="password" name="password" placeholder="Senha:" value="{{ old('password') }}"><br><br>
 
-        <label>Nome: </label>
-        <input type="text" name="name" placeholder="Nome Completo" value="{{ old('name') }}"><br><br>
+                <button type="submit">Cadastrar</button>
 
-        <label>email: </label>
-        <input type="email" name="email" placeholder="email do usuario" value="{{ old('email') }}"><br><br>
+                @if ($errors->any())
+                    <div class="error-message">
+                        {{ $errors->first() }}
+                    </div>
+                @endif
+            </form>
+            <div class="footer-links">
+                <a href="{{ route('user.index') }}">Já tem uma conta? Listar usuários</a>
+            </div>
+        </div>
+    </div>
 
-        <label>senha: </label>
-        <input type="password" name="password" placeholder="senha com mínimo 6 caracteres" value="{{ old('password') }}"><br><br>
 
-        <button type="submit">Cadastrar</button>
-    </form>
+
+
+
+
 </body>
+
 </html>
