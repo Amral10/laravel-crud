@@ -23,8 +23,7 @@
         ID: {{ $user->id }}<br>
         Nome: {{ $user->name }}<br>
         email: {{ $user->email }}<br>
-        Bio: {{ $user->bio }} <br>
-        <a href="{{ route('user.show', ['user' => $user->id]) }}">Visualizar</a><br>
+        <a href="{{ route('profile.show', ['user' => $user->id]) }}">Visualizar</a><br>
         <a href="{{ route('user.edit', ['user' => $user->id]) }}">Editar</a><br>
         <form method="POST" action="{{ route('user.destroy', ['user' => $user->id]) }}">
             @csrf

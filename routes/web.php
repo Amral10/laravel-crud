@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -11,6 +12,13 @@ route::post('/store-user', [UserController::class, 'store'])->name('user-store')
 route::get('/edit-user{user}', [UserController::class,'edit'])->name('user.edit');
 route::put('/update-user{user}', [UserController::class, 'update'])->name('user-update');
 route::delete('/destroy-user{user}', [UserController::class,'destroy'])->name('user.destroy');
+
+
+// route::get('/profile/')
+Route::resource("/profile/", ProfileController::class);
+route::get('/profile/show-profile{user}', [ProfileController::class,'show'])->name('profile.show');
+
+
 
 /*
 |--------------------------------------------------------------------------

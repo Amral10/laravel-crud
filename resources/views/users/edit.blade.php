@@ -38,8 +38,6 @@
         <input type="password" name="password" placeholder="senha com mínimo 6 caracteres"
             value="{{ old('password') }}"><br><br>
 
-        <label>Bio: </label>
-        <input type="text" name="bio" id="insira uma descrição" value="{{ old('bio', $user->bio) }}"><br><br>
 
         <button type="submit">Salvar</button>
 
