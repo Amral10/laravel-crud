@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,11 @@ route::delete('/destroy-user{user}', [UserController::class,'destroy'])->name('u
 
 
 // route::get('/profile/')
-Route::resource("/profile/", ProfileController::class);
+route::resource("/profile/", ProfileController::class);
 route::get('/profile/show-profile{user}', [ProfileController::class,'show'])->name('profile.show');
 
+
+route::get('/index', [PostController::class, 'index'])->name('post.index');
 
 
 /*
