@@ -24,6 +24,7 @@
     {{-- FEED --}}
     @forelse($posts as $postagem)
         <div class="card">
+
             {{-- Header --}}
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
                 @if($postagem->user->profile && $postagem->user->profile->foto)
@@ -35,10 +36,13 @@
                 @endif
 
                 <div style="display:flex;flex-direction:column;line-height:1.3;">
-                    <span style="font-size:0.875rem;font-weight:600;color:#111827;">{{ $postagem->user->name }}</span>
+                    <a href="{{ route('profile.show', $postagem->user->id) }}"
+                        style="font-size:0.875rem;font-weight:600;color:#111827;text-decoration:none;">
+                        {{ $postagem->user->name }}
+                    </a>
                     <span style="font-size:0.75rem;color:#9ca3af;">
                         @if($postagem->user->profile)
-                            @{{ $postagem->user->profile->username }} ·
+                            @.{{ $postagem->user->name }} ·
                         @endif
                         {{ $postagem->created_at->diffForHumans() }}
                     </span>

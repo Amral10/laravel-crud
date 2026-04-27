@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Profile;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -35,13 +36,12 @@ class ProfileController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Profile $user)
-    {
-        $profile = Profile::where('user_id', '=', $user->id)->get()->first();
-        
-        return view('profile.show', ['profile' => $profile]);
-
-    }
+    public function show($id)
+{
+    $user = User::with('profile', 'posts')->findOrFail($id);
+    $posts = $user->posts()->latest()->get();
+    return view('profile.show', compact('user', 'posts'));
+}
 
     /**
      * Show the form for editing the specified resource.
