@@ -1,23 +1,28 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
-route::get('/', [UserController::class, 'index'])->name('user.index');
-route::get('/show-user{user}', [UserController::class,'show'])->name('user.show');
-route::get('/create-user', [UserController::class, 'create'])->name('user.create');
-route::post('/store-user', [UserController::class, 'store'])->name('user-store');
-route::get('/edit-user{user}', [UserController::class,'edit'])->name('user.edit');
-route::put('/update-user{user}', [UserController::class, 'update'])->name('user-update');
-route::delete('/destroy-user{user}', [UserController::class,'destroy'])->name('user.destroy');
+Route::prefix('user')->group(function () {
+    Route::get('/',                         [UserController::class, 'index'])->name('user.index');
+    Route::get('/show-user/{user}',         [UserController::class,'show'])->name('user.show');
+    Route::get('/create-user',              [UserController::class, 'create'])->name('user.create');
+    Route::post('/store-user',              [UserController::class, 'store'])->name('user-store');
+    Route::get('/edit-user/{user}',         [UserController::class,'edit'])->name('user.edit');
+    Route::put('/update-user/{user}',       [UserController::class, 'update'])->name('user-update');
+    Route::delete('/destroy-user/{user}',   [UserController::class,'destroy'])->name('user.destroy');
+});
 
+Route::prefix('post')->group(function (){
+    Route::get('/', [PostController::class, 'index'])->name('post.index');
+});
 
-// route::get('/profile/')
-Route::resource("/profile/", ProfileController::class);
-route::get('/profile/show-profile{user}', [ProfileController::class,'show'])->name('profile.show');
-
+Route::prefix('profile')->group( function () {
+    Route::get('/profile/show-profile/{user}', [ProfileController::class,'show'])->name('profile.show');
+});
 
 
 /*
